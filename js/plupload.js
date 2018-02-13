@@ -9046,6 +9046,18 @@ define("plupload/ImageResizer", [
 
 	ImageResizer.prototype = new Queueable();
 
+
+    //////////////////////////////////////////////////////////////////////////////
+    // bhu - hack to set the globally accessible plupload.Image constructor
+    // as per:
+    //
+    // https://github.com/moxiecode/plupload/issues/1406
+    // https://github.com/moxiecode/plupload/commit/6eae615454e637581b4e79a41eb700e8f3eb3009
+
+    // ImageResizer is only included for builds with Image manipulation support, so we add plupload.Image here manually
+ 	plupload.Image = mxiImage;
+
+
 	return ImageResizer;
 });
 
